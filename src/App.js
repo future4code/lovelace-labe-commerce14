@@ -64,14 +64,27 @@ export default class App extends React.Component {
 
 
 adicionaItemAoCarrinho = () => {
-
+  
 }
 
 removeItemDoCarrinho = () => {
 
 }
 
+/* Estas acima são onClick
+Estas abaixo vão ser onChange */
 
+mudaFiltroMin = (event) => {
+  this.setState({filtroMin: event.target.value})
+}
+
+mudaFiltroMan = (event) => {
+  this.setState({filtroMax: event.target.value})
+}
+
+mudaFiltroNome = (event) => {
+  this.setState({filtroNome: event.target.value})
+}
 
 mudaOrdenacao = (event) => {
     this.setState({ordenacao: event.target.value})
