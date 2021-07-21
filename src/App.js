@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Filtros from './components/Filtros';
 import Carrinho from './components/Carrinho';
 import styled from 'styled-components';
 import CardProduto from './components/CardProduto'
@@ -27,7 +28,6 @@ const GeneralContainer = styled.div`
     width: 100%;
     height: 100%;
   }
-
   main{
     overflow: auto;
 
@@ -52,11 +52,25 @@ export default class App extends React.Component {
 
 
     return (
+      <GeneralContainer>
+        <header></header>
+
+        <nav>
+
+        </nav>
+
+        <main></main>
+
+      </GeneralContainer>
+      
+      )
+
         <GeneralContainer>
           <header></header>
 
         <nav>
-          <div id="filtro" />
+          <Filtros>
+          </Filtros>
           <Carrinho></Carrinho>
 
         </nav>
@@ -78,6 +92,7 @@ export default class App extends React.Component {
 
         </GeneralContainer>
     )
+
   }
 
 }
