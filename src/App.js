@@ -1,8 +1,10 @@
 import React from 'react';
 import './App.css';
-import styled from "styled-components";
 import Filtros from './components/Filtros';
-
+import Carrinho from './components/Carrinho';
+import styled from 'styled-components';
+import CardProduto from './components/CardProduto'
+import { Produtos } from './App.styled'
 
 
 const GeneralContainer = styled.div`
@@ -11,6 +13,8 @@ const GeneralContainer = styled.div`
   display: grid;
   grid-template-rows: 50px 1fr;
   grid-template-columns: 300px 1fr;
+  max-width: 1200px;
+  margin: 0 auto;
 
   header {
     background-color: blue;
@@ -20,25 +24,39 @@ const GeneralContainer = styled.div`
   }
 
   nav {
-    background-color: green;
+    background-color: green; 
     width: 100%;
     height: 100%;
   }
+  main{
+    overflow: auto;
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.2);
+      border-radius: 20px;
+      border: 3px solid transparent;
+    }
+  }
+
 `
+
 export default class App extends React.Component {
 
   render() {
 
 
     return (
-
       <GeneralContainer>
         <header></header>
 
         <nav>
-          <Filtros>
 
-          </Filtros>
         </nav>
 
         <main></main>
@@ -46,6 +64,35 @@ export default class App extends React.Component {
       </GeneralContainer>
       
       )
+
+        <GeneralContainer>
+          <header></header>
+
+        <nav>
+          <Filtros>
+          </Filtros>
+          <Carrinho></Carrinho>
+
+        </nav>
+
+          <main>
+            <Produtos>
+              <CardProduto></CardProduto>
+              <CardProduto></CardProduto>
+              <CardProduto></CardProduto>
+              <CardProduto></CardProduto>
+              <CardProduto></CardProduto>
+              <CardProduto></CardProduto>
+              <CardProduto></CardProduto>
+              <CardProduto></CardProduto>
+              <CardProduto></CardProduto>
+              <CardProduto></CardProduto>
+            </Produtos>
+          </main>
+
+        </GeneralContainer>
+    )
+
   }
 
 }
