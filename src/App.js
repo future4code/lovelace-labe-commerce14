@@ -1,6 +1,9 @@
 import React from 'react';
 import './App.css';
 import styled from "styled-components";
+import Filtros from './components/Filtros';
+
+
 
 const GeneralContainer = styled.div`
   width: 100vw;
@@ -22,11 +25,6 @@ const GeneralContainer = styled.div`
     height: 100%;
   }
 `
-
-
-
-
-
 export default class App extends React.Component {
 
   render() {
@@ -37,7 +35,11 @@ export default class App extends React.Component {
       <GeneralContainer>
         <header></header>
 
-        <nav></nav>
+        <nav>
+          <Filtros>
+
+          </Filtros>
+        </nav>
 
         <main></main>
 
