@@ -1,6 +1,10 @@
 import React from 'react';
 import './App.css';
-import styled from "styled-components";
+import styled from 'styled-components';
+
+import CardProduto from './components/CardProduto'
+
+import { Produtos } from './App.styled'
 
 const GeneralContainer = styled.div`
   width: 100vw;
@@ -8,6 +12,8 @@ const GeneralContainer = styled.div`
   display: grid;
   grid-template-rows: 50px 1fr;
   grid-template-columns: 300px 1fr;
+  max-width: 1200px;
+  margin: 0 auto;
 
   header {
     background-color: blue;
@@ -21,11 +27,24 @@ const GeneralContainer = styled.div`
     width: 100%;
     height: 100%;
   }
+
+  main{
+    overflow: auto;
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.2);
+      border-radius: 20px;
+      border: 3px solid transparent;
+    }
+  }
+
 `
-
-
-
-
 
 export default class App extends React.Component {
 
@@ -33,17 +52,28 @@ export default class App extends React.Component {
 
 
     return (
+        <GeneralContainer>
+          <header></header>
 
-      <GeneralContainer>
-        <header></header>
+          <nav></nav>
 
-        <nav></nav>
+          <main>
+            <Produtos>
+              <CardProduto></CardProduto>
+              <CardProduto></CardProduto>
+              <CardProduto></CardProduto>
+              <CardProduto></CardProduto>
+              <CardProduto></CardProduto>
+              <CardProduto></CardProduto>
+              <CardProduto></CardProduto>
+              <CardProduto></CardProduto>
+              <CardProduto></CardProduto>
+              <CardProduto></CardProduto>
+            </Produtos>
+          </main>
 
-        <main></main>
-
-      </GeneralContainer>
-      
-      )
+        </GeneralContainer>
+    )
   }
 
 }
