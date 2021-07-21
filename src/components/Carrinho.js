@@ -7,6 +7,8 @@ const BlocoCarrinho = styled.div`
     display: flex;
     flex-direction: column;
     margin: 10px;
+    justify-content: center;
+    align-items: center;
     
 `
 const BlocoAdicionados = styled.div`
