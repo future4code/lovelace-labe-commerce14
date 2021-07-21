@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
+import Carrinho from './components/Carrinho';
 import styled from 'styled-components';
-
 import CardProduto from './components/CardProduto'
-
 import { Produtos } from './App.styled'
+
 
 const GeneralContainer = styled.div`
   width: 100vw;
@@ -23,7 +23,7 @@ const GeneralContainer = styled.div`
   }
 
   nav {
-    background-color: green;
+    background-color: green; 
     width: 100%;
     height: 100%;
   }
@@ -55,7 +55,11 @@ export default class App extends React.Component {
         <GeneralContainer>
           <header></header>
 
-          <nav></nav>
+        <nav>
+          <div id="filtro" />
+          <Carrinho></Carrinho>
+
+        </nav>
 
           <main>
             <Produtos>
