@@ -52,26 +52,17 @@ export default class App extends React.Component {
 
 
     return (
-      <GeneralContainer>
-        <header></header>
-
-        <nav>
-
-        </nav>
-
-        <main></main>
-
-      </GeneralContainer>
-      
-      )
-
+     
         <GeneralContainer>
           <header></header>
 
         <nav>
           <Filtros>
           </Filtros>
-          <Carrinho></Carrinho>
+          
+          <Carrinho>
+
+          </Carrinho>
 
         </nav>
 
