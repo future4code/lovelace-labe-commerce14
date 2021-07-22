@@ -46,27 +46,79 @@ const GeneralContainer = styled.div`
 
 `
 
+ const BlocoFiltroPreco = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin: 15px;
+ ` 
+
 export default class App extends React.Component {
+
+  state = {
+    ordenacao: "",
+    filtroMin: "",
+    filtroMax: "",
+    filtroNome: "",
+    listaProdutos: []
+}
+
+
+
+adicionaItemAoCarrinho = () => {
+  
+}
+
+removeItemDoCarrinho = () => {
+
+}
+
+/* Estas acima são onClick
+Estas abaixo vão ser onChange */
+
+mudaFiltroMin = (event) => {
+  this.setState({filtroMin: event.target.value})
+}
+
+mudaFiltroMan = (event) => {
+  this.setState({filtroMax: event.target.value})
+}
+
+mudaFiltroNome = (event) => {
+  this.setState({filtroNome: event.target.value})
+}
+
+mudaOrdenacao = (event) => {
+    this.setState({ordenacao: event.target.value})
+}
+
+
 
   render() {
 
-
     return (
-     
         <GeneralContainer>
           <header></header>
 
         <nav>
           <Filtros>
           </Filtros>
-          
-          <Carrinho>
 
-          </Carrinho>
+          <Carrinho />
 
         </nav>
 
           <main>
+            {/* Depois seria preciso mudar esta parte para o componente */}
+            <BlocoFiltroPreco>
+              <p>Quantidade de produtos:</p>
+              <div>
+                <p>Ordenação:</p>
+                <select value={this.state.ordenacao}  onChange={this.mudaOrdenacao}>
+                <option value="crescente">Crescente</option>
+                <option value="decrescente">Decrescente</option>              
+              </select>
+              </div>
+            </BlocoFiltroPreco>
             <Produtos>
               <CardProduto></CardProduto>
               
