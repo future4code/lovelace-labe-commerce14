@@ -69,15 +69,7 @@ export default class App extends React.Component {
           <main>
             <Produtos>
               <CardProduto></CardProduto>
-              <CardProduto></CardProduto>
-              <CardProduto></CardProduto>
-              <CardProduto></CardProduto>
-              <CardProduto></CardProduto>
-              <CardProduto></CardProduto>
-              <CardProduto></CardProduto>
-              <CardProduto></CardProduto>
-              <CardProduto></CardProduto>
-              <CardProduto></CardProduto>
+              
             </Produtos>
           </main>
 
