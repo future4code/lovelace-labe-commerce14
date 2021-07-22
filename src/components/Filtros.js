@@ -14,10 +14,6 @@ const ContainerFiltros = styled.div`
 
     }
 `
-
-
-
-
 export default class Filtros extends React.Component {
 
     render() {
@@ -46,17 +42,12 @@ export default class Filtros extends React.Component {
                     </div>
 
                 </form>
-
-                
-
-
-
+             
             </ContainerFiltros>
             
 
         )
     }    
-
 
 }
 

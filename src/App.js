@@ -63,6 +63,7 @@ export default class App extends React.Component {
 }
 
 
+
 adicionaItemAoCarrinho = () => {
   
 }
@@ -94,7 +95,6 @@ mudaOrdenacao = (event) => {
 
   render() {
 
-
     return (
         <GeneralContainer>
           <header></header>
@@ -102,6 +102,7 @@ mudaOrdenacao = (event) => {
         <nav>
           <Filtros>
           </Filtros>
+
           <Carrinho />
 
         </nav>
@@ -120,15 +121,7 @@ mudaOrdenacao = (event) => {
             </BlocoFiltroPreco>
             <Produtos>
               <CardProduto></CardProduto>
-              <CardProduto></CardProduto>
-              <CardProduto></CardProduto>
-              <CardProduto></CardProduto>
-              <CardProduto></CardProduto>
-              <CardProduto></CardProduto>
-              <CardProduto></CardProduto>
-              <CardProduto></CardProduto>
-              <CardProduto></CardProduto>
-              <CardProduto></CardProduto>
+              
             </Produtos>
           </main>
 
