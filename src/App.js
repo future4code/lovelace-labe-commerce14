@@ -1,11 +1,10 @@
-import React from 'react';
-import './App.css';
-import Filtros from './components/Filtros';
-import Carrinho from './components/Carrinho';
-import styled from 'styled-components';
-import CardProduto from './components/CardProduto'
-import { Produtos } from './App.styled'
-
+import React from "react";
+import "./App.css";
+import Filtros from "./components/Filtros";
+import Carrinho from "./components/Carrinho";
+import styled from "styled-components";
+import CardProduto from "./components/CardProduto";
+import { Produtos } from "./App.styled";
 
 const GeneralContainer = styled.div`
   width: 100vw;
@@ -24,11 +23,11 @@ const GeneralContainer = styled.div`
   }
 
   nav {
-    background-color: green; 
+    background-color: green;
     width: 100%;
     height: 100%;
   }
-  main{
+  main {
     overflow: auto;
 
     ::-webkit-scrollbar {
@@ -43,91 +42,55 @@ const GeneralContainer = styled.div`
       border: 3px solid transparent;
     }
   }
-
-`
-
- const BlocoFiltroPreco = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin: 15px;
- ` 
+`;
 
 export default class App extends React.Component {
-
   state = {
-    ordenacao: "",
     filtroMin: "",
     filtroMax: "",
     filtroNome: "",
-    listaProdutos: []
-}
+    listaProdutos: [],
+  };
 
+  adicionaItemAoCarrinho = () => {};
 
+  removeItemDoCarrinho = () => {};
 
-adicionaItemAoCarrinho = () => {
-  
-}
-
-removeItemDoCarrinho = () => {
-
-}
-
-/* Estas acima são onClick
+  /* Estas acima são onClick
 Estas abaixo vão ser onChange */
 
-mudaFiltroMin = (event) => {
-  this.setState({filtroMin: event.target.value})
-}
+  mudaFiltroMin = (event) => {
+    this.setState({ filtroMin: event.target.value });
+  };
 
-mudaFiltroMan = (event) => {
-  this.setState({filtroMax: event.target.value})
-}
+  mudaFiltroMan = (event) => {
+    this.setState({ filtroMax: event.target.value });
+  };
 
-mudaFiltroNome = (event) => {
-  this.setState({filtroNome: event.target.value})
-}
+  mudaFiltroNome = (event) => {
+    this.setState({ filtroNome: event.target.value });
+  };
 
-mudaOrdenacao = (event) => {
-    this.setState({ordenacao: event.target.value})
-}
-
-//teste
+  //teste
 
   render() {
-
     return (
-        <GeneralContainer>
-          <header></header>
+      <GeneralContainer>
+        <header></header>
 
         <nav>
-          <Filtros>
-          </Filtros>
+          <Filtros></Filtros>
 
           <Carrinho />
-
         </nav>
 
-          <main>
-            {/* Depois seria preciso mudar esta parte para o componente */}
-            <BlocoFiltroPreco>
-              <p>Quantidade de produtos:</p>
-              <div>
-                <p>Ordenação:</p>
-                <select value={this.state.ordenacao}  onChange={this.mudaOrdenacao}>
-                <option value="crescente">Crescente</option>
-                <option value="decrescente">Decrescente</option>              
-              </select>
-              </div>
-            </BlocoFiltroPreco>
-            <Produtos>
-              <CardProduto></CardProduto>
-              
-            </Produtos>
-          </main>
-
-        </GeneralContainer>
-    )
-
+        <main>
+          {/* Depois seria preciso mudar esta parte para o componente */}
+          <Produtos>
+            <CardProduto></CardProduto>
+          </Produtos>
+        </main>
+      </GeneralContainer>
+    );
   }
-
 }
