@@ -12,7 +12,7 @@ const BlocoCarrinho = styled.div`
     
 `
 const BlocoAdicionados = styled.div`
-    margin: 20px;
+    margin: 15px;
     span {
         padding-right: 10px;
     }
