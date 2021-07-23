@@ -49,10 +49,24 @@ export default class App extends React.Component {
     filtroMin: "",
     filtroMax: "",
     filtroNome: "",
-    listaProdutos: [],
+    listaProdutos: [{}],
   };
 
-  adicionaItemAoCarrinho = () => {};
+  adicionaItemAoCarrinho = () => {
+    /*     const novoItem = {
+      value: {}
+
+    }
+    const novaLista = this.state.listaProdutos.map((id) =>{
+      if (id === id) { 
+      return (
+        [...this.state.listaProdutos, novoItem]
+      )
+    }
+    })
+    
+ */
+  };
 
   removeItemDoCarrinho = () => {};
 

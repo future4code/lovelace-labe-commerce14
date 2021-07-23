@@ -38,26 +38,25 @@ const arrayDeProdutos = [
   {
     id: 3,
     name: "Foguete 3",
-    value: 33000.0,
+    value: 300.0,
     imageUrl: "https://picsum.photos/200/200?a=4",
   },
 ];
+console.log("Normal:", arrayDeProdutos);
 
-const arrayOrdenadoCrescente = arrayDeProdutos.sort((a, b) => {
+const arrayOrdenadoCrescente = [...arrayDeProdutos].sort((a, b) => {
   if (a.value > b.value) return 1;
   if (a.value < b.value) return -1;
   return 0;
 });
+console.log("Crescente:", arrayOrdenadoCrescente);
 
-console.log(arrayOrdenadoCrescente);
-
-const arrayOrdenadoDecrescente = arrayDeProdutos.sort((a, b) => {
+const arrayOrdenadoDecrescente = [...arrayDeProdutos].sort((a, b) => {
   if (a.value > b.value) return -1;
   if (a.value < b.value) return 1;
   return 0;
 });
-
-console.log(arrayOrdenadoDecrescente);
+console.log("Decrescente", arrayOrdenadoDecrescente);
 
 export default class CardProduto extends Component {
   state = {
@@ -68,16 +67,54 @@ export default class CardProduto extends Component {
     this.setState({ ordenacao: event.target.value });
   };
 
+  imprimeArray = () => {
+    console.log(arrayDeProdutos);
+    console.log(arrayOrdenadoCrescente);
+    console.log(arrayOrdenadoDecrescente);
+  };
+
+  ordemProdutos = () => {
+    switch (this.state.ordenacao) {
+      case "crescente":
+        return arrayOrdenadoCrescente.map((produtos, index) => {
+          return (
+            <ProductCard>
+              <img src={produtos.imageUrl} alt="" />
+              <h3> {produtos.name} </h3> <span> R$ {produtos.value} </span>{" "}
+              <button> Adicionar ao carrinho </button>{" "}
+            </ProductCard>
+          );
+        });
+      case "decrescente":
+        return arrayOrdenadoDecrescente.map((produtos, index) => {
+          return (
+            <ProductCard>
+              <img src={produtos.imageUrl} alt="" />
+              <h3> {produtos.name} </h3> <span> R$ {produtos.value} </span>{" "}
+              <button> Adicionar ao carrinho </button>{" "}
+            </ProductCard>
+          );
+        });
+      default:
+        return arrayDeProdutos.map((produtos, index) => {
+          return (
+            <ProductCard>
+              <img src={produtos.imageUrl} alt="" />
+              <h3> {produtos.name} </h3> <span> R$ {produtos.value} </span>{" "}
+              <button> Adicionar ao carrinho </button>{" "}
+            </ProductCard>
+          );
+        });
+    }
+  };
+
+  componentDidUpdate() {
+    {
+      this.ordemProdutos();
+    }
+  }
+
   render() {
-    const produtosCard = arrayDeProdutos.map((produtos, index) => {
-      return (
-        <ProductCard>
-          <img src={produtos.imageUrl} alt="" />
-          <h3> {produtos.name} </h3> <span> R$ {produtos.value} </span>{" "}
-          <button> Adicionar ao carrinho </button>{" "}
-        </ProductCard>
-      );
-    });
     return (
       <>
         <BlocoFiltroPreco>
@@ -90,7 +127,8 @@ export default class CardProduto extends Component {
             </select>
           </div>
         </BlocoFiltroPreco>
-        {produtosCard}
+        {this.ordemProdutos()}
+        {this.imprimeArray()}
       </>
     );
   }
