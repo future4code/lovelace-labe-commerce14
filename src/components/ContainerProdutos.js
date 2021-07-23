@@ -8,21 +8,19 @@ const Produtos = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   max-height: 300px;
   grid-gap: 1rem;
-`
+`;
 
 const GeneralContainer = styled.div`
   padding: 1rem;
   display: grid;
   grid-template-rows: 50px 1fr;
-  
-`
+`;
 const Ordenacao = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
-`
-
+`;
 
 const ProductCard = styled.div`
   display: grid;
@@ -55,8 +53,24 @@ const ProductCard = styled.div`
 `;
 
 export default class ContainerProdutos extends Component {
+  arrayOrdenado = () => {
+    const arrayOrdenadoFuncional = this.props.array.sort((a, b) => {
+      if (this.props.Ordenacao === "crescente") {
+        if (a.value < b.value) return -1;
+        if (a.value > b.value) return 1;
+        return 0;
+      } else if (this.props.Ordenacao === "decrescente") {
+        if (a.value < b.value) return 1;
+        if (a.value > b.value) return -1;
+        return 0;
+      }
+    });
+    return arrayOrdenadoFuncional;
+  };
+
   render() {
-    const produtosCard = this.props.array.map((produtos, index) => {
+    const arrayFinal = this.arrayOrdenado();
+    const produtosCard = arrayFinal.map((produtos, index) => {
       return (
         <ProductCard key={index}>
           <div>
@@ -67,18 +81,17 @@ export default class ContainerProdutos extends Component {
         </ProductCard>
       );
     });
+
     return (
       <GeneralContainer>
         <Ordenacao>
-          <div>
-            Quantidade de produtos: {this.props.array.length}
-          </div>
+          <div>Quantidade de produtos: {this.props.array.length}</div>
           <div>
             <span>Ordenação:</span>
-            <select>
-              <option value="cormal" onChange={this.props.onChangeOrdenacao}>Normal</option>
-              <option value="crescente" onChange={this.props.onChangeOrdenacao}>Crescente</option>
-              <option value="cecrescente" onChange={this.props.onChangeOrdenacao}>Decrescente</option>
+            <select onChange={this.props.onChangeOrdenacao}>
+              <option value="normal">Normal</option>
+              <option value="crescente">Crescente</option>
+              <option value="decrescente">Decrescente</option>
             </select>
           </div>
         </Ordenacao>

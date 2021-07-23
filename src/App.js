@@ -2,11 +2,9 @@ import React from "react";
 import "./App.css";
 import styled from "styled-components";
 
-import Filtros from './components/ContainerFiltros'
-import Carrinho from './components/ContainerCarrinho'
-import ContainerProdutos from './components/ContainerProdutos'
-
-
+import Filtros from "./components/ContainerFiltros";
+import Carrinho from "./components/ContainerCarrinho";
+import ContainerProdutos from "./components/ContainerProdutos";
 
 const GeneralContainer = styled.div`
   width: 100vw;
@@ -18,22 +16,21 @@ const GeneralContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #141F36;
+    background-color: #141f36;
     width: 100%;
     height: 100%;
     padding: 0 1rem;
     color: white;
   }
+`;
 
-  `;
-
-  const Conteudo = styled.div`
+const Conteudo = styled.div`
   width: 100%;
   max-width: 1200px;
   display: grid;
   grid-template-columns: 300px 1fr;
 
-  nav{
+  nav {
     display: flex;
     flex-direction: column;
     padding: 1rem;
@@ -41,99 +38,63 @@ const GeneralContainer = styled.div`
     text-align: center;
     background-color: #e0e0e0;
   }
-  `
-
-
-
+`;
 
 export default class App extends React.Component {
-  state={
-    arrayProdutos: [  {
-      id: 1,
-      name: "Foguete da Missão Apollo 11",
-      value: 10000.0,
-      imageUrl: "https://picsum.photos/200/200?a=2",
+  state = {
+    arrayProdutos: [
+      {
+        id: 1,
+        name: "Foguete da Missão Apollo 11",
+        value: 10000.0,
+        imageUrl: "https://picsum.photos/200/200?a=2",
       },
       {
-      id: 2,
-      name: "Foguete SpaceX",
-      value: 33000.0,
-      imageUrl: "https://picsum.photos/200/200?a=3",
+        id: 2,
+        name: "Foguete SpaceX",
+        value: 33000.0,
+        imageUrl: "https://picsum.photos/200/200?a=3",
       },
       {
-      id: 3,
-      name: "Foguete 3",
-      value: 13000.0,
-      imageUrl: "https://picsum.photos/200/200?a=4",
+        id: 3,
+        name: "Foguete 3",
+        value: 13000.0,
+        imageUrl: "https://picsum.photos/200/200?a=4",
       },
       {
-      id: 4,
-      name: "Foguete 4",
-      value: 53000.0,
-      imageUrl: "https://picsum.photos/200/200?a=5",
+        id: 4,
+        name: "Foguete 4",
+        value: 53000.0,
+        imageUrl: "https://picsum.photos/200/200?a=5",
       },
     ],
-    ValorMinimo: '',
-    ValorMaximo: '',
-    BuscaPorNome: '',
-    Ordenacao: '',
-    Carrinho: []
-  }
+    ValorMinimo: "",
+    ValorMaximo: "",
+    BuscaPorNome: "",
+    Ordenacao: "",
+    Carrinho: [],
+  };
 
-  componentDidUpdate() {
-    this.ordenaProdutos()
-  }
+  adicionaItemNoCarrinho = (id) => {};
 
-  adicionaItemNoCarrinho = (id) => {
-
-  }
-
-  onChangeValorMinimo = (event) =>{
+  onChangeValorMinimo = (event) => {
     this.setState({ ValorMinimo: event.target.value });
-  }
+  };
 
-  onChangeValorMaximo = (event) =>{
+  onChangeValorMaximo = (event) => {
     this.setState({ ValorMaximo: event.target.value });
-  }
+  };
 
-  onChangeBuscaPorNome = (event) =>{
+  onChangeBuscaPorNome = (event) => {
     this.setState({ BuscaPorNome: event.target.value });
-  }
+  };
 
-  onChangeOrdenacao = (event) =>{
+  onChangeOrdenacao = (event) => {
     this.setState({ Ordenacao: event.target.value });
-  }
+    console.log("alternei");
+  };
 
-  ordenaProdutos = () => {
-    const arrayCrescente = [...this.state.arrayProdutos].sort((a, b) => {
-      if (a.value > b.value) return 1;
-      if (a.value < b.value) return -1;
-      return 0;
-    });
-
-    const arrayDecrescente = [...this.state.arrayProdutos].sort((a, b) => {
-      if (a.value > b.value) return -1;
-      if (a.value < b.value) return 1;
-      return 0;
-    });
-
-    switch (this.state.ordenacao) {
-      case 'crescente':
-        this.setState({arrayProdutos: arrayCrescente})
-        break;
-      case 'decrescente':
-        this.setState({arrayProdutos: arrayDecrescente})
-        break;
-      case 'normal':
-        return this.state.arrayProdutos
-      default:
-        break;
-    }
- 
-  }
-  
   render() {
-
     return (
       <GeneralContainer>
         <header>
@@ -149,7 +110,7 @@ export default class App extends React.Component {
               onChangeValorMaximo={this.onChangeValorMaximo}
               onChangeBuscaPorNome={this.onChangeBuscaPorNome}
             />
-            <Carrinho/>
+            <Carrinho />
           </nav>
 
           <main>
@@ -159,7 +120,6 @@ export default class App extends React.Component {
               onclickOrdenacao={this.onChangeOrdenacao}
             />
           </main>
-
         </Conteudo>
       </GeneralContainer>
     );
