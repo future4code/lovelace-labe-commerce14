@@ -54,21 +54,37 @@ const ProductCard = styled.div`
 
 export default class ContainerProdutos extends Component {
   state = {
-    Ordenacao: "",
+    Ordenacao: "decrescente",
   };
 
   arrayOrdenado = () => {
-    const arrayOrdenadoFuncional = this.props.array.sort((a, b) => {
-      if (this.props.Ordenacao === "crescente") {
-        if (a.value < b.value) return -1;
-        if (a.value > b.value) return 1;
-        return 0;
-      } else if (this.props.Ordenacao === "decrescente") {
-        if (a.value < b.value) return 1;
-        if (a.value > b.value) return -1;
-        return 0;
-      }
-    });
+    const arrayOrdenadoFuncional = this.props.array
+      .filter((produto) =>
+        this.props.ValueValorMaximo
+          ? produto.value < this.props.ValueValorMaximo
+          : true
+      )
+      .filter((produto) =>
+        this.props.valueValorMinimo
+          ? produto.value > this.props.valueValorMinimo
+          : true
+      )
+      .filter((produto) =>
+        this.props.valueBuscaPorNome
+          ? produto.name.includes(this.props.valueBuscaPorNome)
+          : true
+      )
+      .sort((a, b) => {
+        if (this.state.Ordenacao === "crescente") {
+          if (a.value < b.value) return -1;
+          if (a.value > b.value) return 1;
+          return 0;
+        } else if (this.state.Ordenacao === "decrescente") {
+          if (a.value < b.value) return 1;
+          if (a.value > b.value) return -1;
+          return 0;
+        }
+      });
     return arrayOrdenadoFuncional;
   };
 
@@ -97,7 +113,7 @@ export default class ContainerProdutos extends Component {
           <div>Quantidade de produtos: {this.props.array.length}</div>
           <div>
             <span>Ordenação:</span>
-            <select onChange={this.props.onChangeOrdenacao}>
+            <select onChange={this.onChangeOrdenacao}>
               <option value="normal">Normal</option>
               <option value="crescente">Crescente</option>
               <option value="decrescente">Decrescente</option>

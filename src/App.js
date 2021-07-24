@@ -104,7 +104,10 @@ export default class App extends React.Component {
               onChangeValorMaximo={this.onChangeValorMaximo}
               onChangeBuscaPorNome={this.onChangeBuscaPorNome}
             />
-            <Carrinho />
+            <Carrinho
+              produtos={this.state.arrayProdutos}
+              adicionaItem={this.adicionaItemNoCarrinho}
+            />
           </nav>
 
           <main>
@@ -112,6 +115,12 @@ export default class App extends React.Component {
               array={this.state.arrayProdutos}
               onChangeOrdenacao={this.onChangeOrdenacao}
               onclickOrdenacao={this.onChangeOrdenacao}
+              valueValorMinimo={this.state.ValorMinimo}
+              valueValorMaximo={this.state.ValorMaximo}
+              valueBuscaPorNome={this.state.BuscaPorNome}
+              onChangeValorMinimo={this.onChangeValorMinimo}
+              onChangeValorMaximo={this.onChangeValorMaximo}
+              onChangeBuscaPorNome={this.onChangeBuscaPorNome}
             />
           </main>
         </Conteudo>
