@@ -37,7 +37,7 @@ export default class Filtros extends Component {
             <input
               value={this.props.valueValorMaximo}
               onChange={this.props.onChangeValorMaximo}
-              type="text"
+              type="number"
               placeholder="Digite o max"
             />
           </div>
