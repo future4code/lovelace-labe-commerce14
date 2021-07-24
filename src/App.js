@@ -71,7 +71,6 @@ export default class App extends React.Component {
     ValorMinimo: "",
     ValorMaximo: "",
     BuscaPorNome: "",
-    Ordenacao: "",
     Carrinho: [],
   };
 
@@ -87,11 +86,6 @@ export default class App extends React.Component {
 
   onChangeBuscaPorNome = (event) => {
     this.setState({ BuscaPorNome: event.target.value });
-  };
-
-  onChangeOrdenacao = (event) => {
-    this.setState({ Ordenacao: event.target.value });
-    console.log("alternei");
   };
 
   render() {

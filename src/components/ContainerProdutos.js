@@ -53,6 +53,10 @@ const ProductCard = styled.div`
 `;
 
 export default class ContainerProdutos extends Component {
+  state = {
+    Ordenacao: "",
+  };
+
   arrayOrdenado = () => {
     const arrayOrdenadoFuncional = this.props.array.sort((a, b) => {
       if (this.props.Ordenacao === "crescente") {
@@ -66,6 +70,11 @@ export default class ContainerProdutos extends Component {
       }
     });
     return arrayOrdenadoFuncional;
+  };
+
+  onChangeOrdenacao = (event) => {
+    this.setState({ Ordenacao: event.target.value });
+    console.log("alternei");
   };
 
   render() {
