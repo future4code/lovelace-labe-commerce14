@@ -1,1 +1,17 @@
-Sejam bem vindos ao Labe-commerce, esse repositório contém um esqueleto de app React e um .gitignore.
+## [Surge]()
+
+![image]()
+
+
+##### O que deu certo?
+* Conseguimos implementar os filtros;
+* O projeto foi componentizado corretamente;
+
+
+##### O que não funciona:
+
+
+##### Tecnologias utilizadas
+
+ * React
+
