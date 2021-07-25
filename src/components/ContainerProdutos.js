@@ -60,8 +60,8 @@ export default class ContainerProdutos extends Component {
   arrayOrdenado = () => {
     const arrayOrdenadoFuncional = this.props.arrayProdutos
       .filter((produto) =>
-        this.props.ValueValorMaximo
-          ? produto.value < this.props.ValueValorMaximo
+        this.props.valueValorMaximo
+          ? produto.value < this.props.valueValorMaximo
           : true
       )
       .filter((produto) =>
