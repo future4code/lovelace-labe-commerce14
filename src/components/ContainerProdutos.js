@@ -58,7 +58,7 @@ export default class ContainerProdutos extends Component {
   };
 
   arrayOrdenado = () => {
-    const arrayOrdenadoFuncional = this.props.array
+    const arrayOrdenadoFuncional = this.props.arrayProdutos
       .filter((produto) =>
         this.props.ValueValorMaximo
           ? produto.value < this.props.ValueValorMaximo
@@ -102,7 +102,9 @@ export default class ContainerProdutos extends Component {
             <img src={produtos.imageUrl} alt="" />
           </div>
           <h3> {produtos.name} </h3> <span> R$ {produtos.value} </span>
-          <button> Adicionar ao carrinho </button>
+          <button onClick={() => this.props.adicionaItemNoCarrinho(this.props.arrayProdutos.id)}>
+            Adicionar ao carrinho
+          </button>
         </ProductCard>
       );
     });
@@ -110,7 +112,7 @@ export default class ContainerProdutos extends Component {
     return (
       <GeneralContainer>
         <Ordenacao>
-          <div>Quantidade de produtos: {this.props.array.length}</div>
+          <div>Quantidade de produtos: {this.props.arrayProdutos.length}</div>
           <div>
             <span>Ordenação:</span>
             <select onChange={this.onChangeOrdenacao}>
