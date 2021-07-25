@@ -12,16 +12,14 @@ export default class Carrinho extends Component {
         <div>
           <span>{produto.name}</span>
           <span>{produto.quantity}</span>
+          <button>Remover</button>
         </div>
       );
     });
     return (
       <ContainerCarrinho>
         <h3>Carrinho</h3>
-        <div>
-          {carrinho}
-          <button>Remover</button>
-        </div>
+        <div>{carrinho}</div>
         <p>Valor total</p>
       </ContainerCarrinho>
     );
