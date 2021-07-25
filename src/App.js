@@ -71,7 +71,7 @@ export default class App extends React.Component {
     ValorMinimo: "",
     ValorMaximo: "",
     BuscaPorNome: "",
-    carrinho: [
+    produtosNoCarrinho: [
       {
         id: 1,
         name: "Foguete da Missão Apollo 11",
@@ -87,9 +87,32 @@ export default class App extends React.Component {
         quantity: 1,
       },
     ],
+
   };
 
-  adicionaItemNoCarrinho = (id) => {};
+  adicionaItemNoCarrinho = (produtoId) => {
+    const produtoNoCarrinho = this.state.produtosNoCarrinho.find(produto => produtoId === produto.id)
+
+    if(produtoNoCarrinho){
+      const novoProdutoNoCarrinho = this.state.produtosNoCarrinho.map(produto => {
+        if(produtoId === produto.id) {
+          return{
+            ...produtoNoCarrinho,
+            quantidade: produto.quantidade + 1
+          }
+        }
+
+        return produto
+      })
+      this.setState({produtoNoCarrinho: novoProdutoNoCarrinho})
+    } else{
+      const produtoParaAdicionar = this.state.arrayProdutos.find(produto => produtoId === produto.id)
+
+      const novoProdutoNoCarrinho = [...this.state.produtosNoCarrinho, {...produtoParaAdicionar, quantidade: 1}]
+
+      this.setState({produtoNoCarrinho: novoProdutoNoCarrinho})
+    }
+  };
 
   onChangeValorMinimo = (event) => {
     this.setState({ ValorMinimo: event.target.value });
@@ -121,14 +144,17 @@ export default class App extends React.Component {
             />
             <Carrinho
               produtos={this.state.arrayProdutos}
-              adicionaItem={this.adicionaItemNoCarrinho}
+
+              adicionaItemNoCarrinho={this.adicionaItemNoCarrinho}
+
               carrinho={this.state.carrinho}
+
             />
           </nav>
 
           <main>
             <ContainerProdutos
-              array={this.state.arrayProdutos}
+              arrayProdutos={this.state.arrayProdutos}
               onChangeOrdenacao={this.onChangeOrdenacao}
               onclickOrdenacao={this.onChangeOrdenacao}
               valueValorMinimo={this.state.ValorMinimo}
@@ -137,6 +163,8 @@ export default class App extends React.Component {
               onChangeValorMinimo={this.onChangeValorMinimo}
               onChangeValorMaximo={this.onChangeValorMaximo}
               onChangeBuscaPorNome={this.onChangeBuscaPorNome}
+
+              adicionaItemNoCarrinho={this.adicionaItemNoCarrinho}
             />
           </main>
         </Conteudo>
