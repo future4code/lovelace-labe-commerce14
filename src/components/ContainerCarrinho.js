@@ -11,8 +11,8 @@ export default class Carrinho extends Component {
       <ContainerCarrinho>
         <h3>Carrinho</h3>
         <div>
-          <span>item</span>
-          <span>quantidade</span>
+          <span>{this.props.carrinho.name}</span>
+          <span>{this.props.carrinho.quantity}</span>
           <button>Remover</button>
         </div>
         <p>Valor total</p>

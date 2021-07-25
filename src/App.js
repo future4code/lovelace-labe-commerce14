@@ -71,7 +71,22 @@ export default class App extends React.Component {
     ValorMinimo: "",
     ValorMaximo: "",
     BuscaPorNome: "",
-    Carrinho: [],
+    carrinho: [
+      {
+        id: 1,
+        name: "Foguete da Missão Apollo 11",
+        value: 10000.0,
+        imageUrl: "https://picsum.photos/200/200?a=2",
+        quantity: 1,
+      },
+      {
+        id: 2,
+        name: "Foguete SpaceX",
+        value: 33000.0,
+        imageUrl: "https://picsum.photos/200/200?a=3",
+        quantity: 1,
+      },
+    ],
   };
 
   adicionaItemNoCarrinho = (id) => {};
@@ -107,6 +122,7 @@ export default class App extends React.Component {
             <Carrinho
               produtos={this.state.arrayProdutos}
               adicionaItem={this.adicionaItemNoCarrinho}
+              carrinho={this.state.carrinho}
             />
           </nav>
 
