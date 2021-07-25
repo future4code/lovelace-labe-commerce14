@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 const ContainerFiltros = styled.div`
-  input{
+  input {
     box-sizing: border-box;
     padding: 5px 10px;
     margin: 5px 0;
@@ -14,8 +14,7 @@ const ContainerFiltros = styled.div`
       outline: 0;
     }
   }
-`
-
+`;
 
 export default class Filtros extends Component {
   render() {
@@ -38,20 +37,21 @@ export default class Filtros extends Component {
             <input
               value={this.props.valueValorMaximo}
               onChange={this.props.onChangeValorMaximo}
-              type="text"
-              placeholder="Digite o max" />
+              type="number"
+              placeholder="Digite o max"
+            />
           </div>
           <div>
             <label>Busca por nome</label>
             <input
               value={this.props.valueBuscaPorNome}
-              onChange={this.props.onChangeBuscaPorNome}            
+              onChange={this.props.onChangeBuscaPorNome}
               type="text"
-              placeholder="Nome do produto" />
+              placeholder="Nome do produto"
+            />
           </div>
         </form>
       </ContainerFiltros>
     );
   }
 }
-
