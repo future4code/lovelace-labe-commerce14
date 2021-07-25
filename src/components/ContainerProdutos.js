@@ -8,6 +8,11 @@ const Produtos = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   max-height: 300px;
   grid-gap: 1rem;
+
+  div > img {
+    height: 100%;
+    width: 100%;
+  }
 `;
 
 const GeneralContainer = styled.div`
