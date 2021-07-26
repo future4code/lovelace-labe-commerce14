@@ -5,15 +5,34 @@ const ContainerCarrinho = styled.div`
   margin: 2rem 0;
 `;
 
+const ProdutosCarrinho = styled.div`
+  margin: 1rem;
+  background-color: white;
+  height: 100%;
+  border-radius: 20px;
+  border: 1px solid black;
+  padding: 10px;
+
+  div {
+    margin: 5px 0;
+  }
+`;
+
 export default class Carrinho extends Component {
   render() {
     const carrinho = this.props.carrinho.map((produto) => {
       return (
-        <div>
-          <span>{produto.name}</span>
+        <ProdutosCarrinho>
+          <span>{produto.name} x</span>
           <span>{produto.quantity}</span>
-          <button>Remover</button>
-        </div>
+          <div>
+            <button
+              onClick={() => this.props.removerItemNoCarrinho(produto.id)}
+            >
+              Remover
+            </button>
+          </div>
+        </ProdutosCarrinho>
       );
     });
     return (
