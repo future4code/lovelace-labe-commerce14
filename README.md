@@ -1,5 +1,6 @@
-## [Surge](http://ancient-stitch.surge.sh/)
+## [Link para o Surge](http://ancient-stitch.surge.sh/)
 
+### Imagem do site finalizado
 ![image](https://user-images.githubusercontent.com/84832122/126926949-eeca71ae-0005-49e6-ae2c-647595635a56.png)
 
 
@@ -15,4 +16,7 @@
 ##### Tecnologias utilizadas
 
  * React
+ * Html
+ * Javascrip
+ * Css
 
