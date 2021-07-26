@@ -112,31 +112,54 @@ export default class App extends React.Component {
         quantity: 1,
       },
     ],
-
   };
 
   adicionaItemNoCarrinho = (produtoId) => {
-    const produtoNoCarrinho = this.state.produtosNoCarrinho.find(produto => produtoId === produto.id)
+    const produtoNoCarrinho = this.state.produtosNoCarrinho.find(
+      (produto) => produtoId === produto.id
+    );
 
-    if(produtoNoCarrinho){
-      const novoProdutoNoCarrinho = this.state.produtosNoCarrinho.map(produto => {
-        if(produtoId === produto.id) {
-          return{
-            ...produtoNoCarrinho,
-            quantidade: produto.quantidade + 1
+    if (produtoNoCarrinho) {
+      const novoProdutoNoCarrinho = this.state.produtosNoCarrinho.map(
+        (produto) => {
+          if (produtoId === produto.id) {
+            return {
+              ...produto,
+              quantity: produto.quantity + 1,
+            };
           }
+
+          return produto;
         }
+      );
+      this.setState({ produtosNoCarrinho: novoProdutoNoCarrinho });
+    } else {
+      const produtoParaAdicionar = this.state.arrayProdutos.find(
+        (produto) => produtoId === produto.id
+      );
 
-        return produto
-      })
-      this.setState({produtoNoCarrinho: novoProdutoNoCarrinho})
-    } else{
-      const produtoParaAdicionar = this.state.arrayProdutos.find(produto => produtoId === produto.id)
+      const novoProdutoNoCarrinho = [
+        ...this.state.produtosNoCarrinho,
+        { ...produtoParaAdicionar, quantity: 1 },
+      ];
 
-      const novoProdutoNoCarrinho = [...this.state.produtosNoCarrinho, {...produtoParaAdicionar, quantidade: 1}]
-
-      this.setState({produtoNoCarrinho: novoProdutoNoCarrinho})
+      this.setState({ produtosNoCarrinho: novoProdutoNoCarrinho });
     }
+  };
+
+  removeItemNoCarrinho = (productId) => {
+    const novoCarrinhoProdutos = this.state.produtosNoCarrinho
+      .map((product) => {
+        if (product.id === productId) {
+          return {
+            ...product,
+            quantity: product.quantity - 1,
+          };
+        }
+        return product;
+      })
+      .filter((product) => product.quantity > 0);
+    this.setState({ produtosNoCarrinho: novoCarrinhoProdutos });
   };
 
   onChangeValorMinimo = (event) => {
@@ -169,16 +192,15 @@ export default class App extends React.Component {
             />
             <Carrinho
               produtos={this.state.arrayProdutos}
-
               adicionaItemNoCarrinho={this.adicionaItemNoCarrinho}
-
-              carrinho={this.state.carrinho}
-
+              carrinho={this.state.produtosNoCarrinho}
+              removerItemNoCarrinho={this.removeItemNoCarrinho}
             />
           </nav>
 
           <main>
             <ContainerProdutos
+              carrinho={this.state.produtosNoCarrinho}
               arrayProdutos={this.state.arrayProdutos}
               onChangeOrdenacao={this.onChangeOrdenacao}
               onclickOrdenacao={this.onChangeOrdenacao}
@@ -188,7 +210,6 @@ export default class App extends React.Component {
               onChangeValorMinimo={this.onChangeValorMinimo}
               onChangeValorMaximo={this.onChangeValorMaximo}
               onChangeBuscaPorNome={this.onChangeBuscaPorNome}
-
               adicionaItemNoCarrinho={this.adicionaItemNoCarrinho}
             />
           </main>

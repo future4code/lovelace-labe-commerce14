@@ -95,7 +95,6 @@ export default class ContainerProdutos extends Component {
 
   onChangeOrdenacao = (event) => {
     this.setState({ Ordenacao: event.target.value });
-    console.log("alternei");
   };
 
   render() {
@@ -107,7 +106,9 @@ export default class ContainerProdutos extends Component {
             <img src={produtos.imageUrl} alt="" />
           </div>
           <h3> {produtos.name} </h3> <span> R$ {produtos.value} </span>
-          <button onClick={() => this.props.adicionaItemNoCarrinho(this.props.arrayProdutos.id)}>
+          <button
+            onClick={() => this.props.adicionaItemNoCarrinho(produtos.id)}
+          >
             Adicionar ao carrinho
           </button>
         </ProductCard>
@@ -117,7 +118,7 @@ export default class ContainerProdutos extends Component {
     return (
       <GeneralContainer>
         <Ordenacao>
-          <div>Quantidade de produtos: {this.props.arrayProdutos.length}</div>
+          <div>Quantidade de produtos: {arrayFinal.length}</div>
           <div>
             <span>Ordenação:</span>
             <select onChange={this.onChangeOrdenacao}>
